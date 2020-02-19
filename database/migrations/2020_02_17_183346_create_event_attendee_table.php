@@ -18,9 +18,9 @@ class CreateEventAttendeeTable extends Migration
             $table->integer('event_id')->default(1);
             $table->string('id_attendee',12)->nullable();
             $table->string('fullname');
-            $table->string('team');
-            $table->string('arrival_bus');
-            $table->string('return_bus');
+            $table->string('team')->nullable();
+            $table->string('arrival_bus')->nullable();
+            $table->string('return_bus')->nullable();
             $table->integer('attendance')->nullable()->default(0); // 0 = Not scanned; 1 = Scanned
             $table->timestamps();
         });

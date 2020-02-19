@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\EventAttendee as Attendee;
+use App\Imports\AttendeeImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AttendeeController extends Controller
 {
@@ -60,6 +62,8 @@ class AttendeeController extends Controller
 
     public function import(Request $request)
     {
-      //
+      Excel::import(new AttendeeImport, $request->file('file'));
+
+      return back();
     }
 }

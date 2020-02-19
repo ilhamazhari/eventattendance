@@ -8,6 +8,17 @@
 
 @section('content')
 <div class="container">
+  <h1>Event Attendee</h1>
+  <br><br>
+  <form action="{{url('/api/attendee/import')}}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <h3>Import data</h3>
+    <div class="row">
+      <div class="col"><input type="file" name="file" class="form-control"></div>
+      <div class="col"><button type="submit" class="btn btn-secondary">Import</button></div>
+    </div>
+  </form>
+  <br><br>
   <table class="table stripped">
     <thead>
       <tr>

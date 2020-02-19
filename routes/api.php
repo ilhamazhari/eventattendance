@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('/event', 'API\EventController', ['except' => ['edit', 'show', 'create']]);
 Route::resource('/attendee', 'API\AttendeeController', ['except' => ['edit', 'show', 'create']]);
+Route::post('/attendee/import', 'API\AttendeeController@import');
