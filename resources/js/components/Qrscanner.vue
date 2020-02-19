@@ -2,7 +2,8 @@
   <div>
     <p class="error">{{ error }}</p>
 
-    <p class="decode-result">Last result: <b>{{ result }}</b></p>
+    <p class="decode-result">ID Pengunjung: <b>{{ id }}</b></p>
+    <p class="decode-result">Nama: <b>{{ name }}</b></p>
 
     <qrcode-stream @decode="onDecode" @init="onInit" />
   </div>
@@ -18,14 +19,17 @@ export default {
   data () {
     return {
       camera: 'rear',
-      result: '',
+      id: '',
+      name: '',
       error: ''
     }
   },
 
   methods: {
-    onDecode (result) {
-      this.result = result
+    async onDecode (result) {
+      const { data } = await window.axios.get('/api/attendee/attendance/${result}');
+      this.id = result;
+      this.name = data.fullname;
     },
 
     async onInit (promise) {
