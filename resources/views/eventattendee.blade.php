@@ -9,7 +9,7 @@
 @section('content')
 <div class="container">
   <h1>Event Attendee</h1>
-  <table>
+  <table class="table stripped">
       <tr>
         <th>No.</th>
         <th>ID Attendee</th>
