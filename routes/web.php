@@ -20,3 +20,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/attendee', 'FrontController@attendee')->name('attendee');
+Route::get('/manage/attendee', 'FrontController@manageAttendee')->name('manage.attendee');

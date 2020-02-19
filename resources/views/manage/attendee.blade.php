@@ -9,6 +9,21 @@
 @section('content')
 <div class="container">
   <h1>Event Attendee</h1>
+  <br><br>
+  <form action="{{url('/api/attendee/import')}}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <h3>Import data</h3>
+    <div class="row">
+      <div class="col"><input type="file" name="file" class="form-control"></div>
+      <div class="col"><button type="submit" class="btn btn-secondary">Import</button></div>
+    </div>
+  </form>
+  <br><br>
+  <div class="row">
+    <div class="col"><h3>Export Data</h3></div>
+    <div class="col"><button type="button" class="btn btn-primary" id="btnExport">Export</button>
+  </div>
+  <div id="attendee">
   <table>
       <tr>
         <th>No.</th>
@@ -19,6 +34,7 @@
         <th>Return Bus</th>
         <th>QR Code</th>
         <th>Scanned</th>
+        <th></th>
       </tr>
       @foreach($attendee as $att)
       <tr>
@@ -30,9 +46,11 @@
         <td>{{$att->return_bus}}</td>
         <td><img src="https://api.qrserver.com/v1/create-qr-code/?data={{$att->id_attendee}}&amp;size=50x50"></td>
         <td>{{$att->attendance}}</td>
+        <td><button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</button> <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a></td>
       </tr>
       @endforeach
   </table>
+  </div>
 </div>
 @endsection
 
