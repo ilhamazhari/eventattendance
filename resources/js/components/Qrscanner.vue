@@ -27,7 +27,7 @@ export default {
 
   methods: {
     async onDecode (result) {
-      const { data } = await window.axios.get('/api/attendee/attendance/${result}');
+      const { data } = await window.axios.get('/api/attendee/attendance/' + result);
       this.id = result;
       this.name = data.fullname;
     },
