@@ -31,6 +31,8 @@ export default {
       const { data } = await window.axios.get('/api/attendee/attendance/' + result);
       if(data.attendance == 1){
         this.error = 'User sudah discan';
+      }else{
+        this.error = '';
       }
       this.id = result;
       this.name = data.fullname;
