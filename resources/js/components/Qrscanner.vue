@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import { QrcodeStream } from 'vue-qrcode-reader'
+import { QrcodeStream } from 'vue-qrcode-reader';
+import { Howl, Howler } from 'howler';
 
 export default {
 
@@ -33,8 +34,11 @@ export default {
       }
       this.id = result;
       this.name = data.fullname;
-      audio = new Audio('http://soundbible.com/mp3/Air%20Plane%20Ding-SoundBible.com-496729130.mp3');
+      const audio = new Howl({
+        src: ['http://soundbible.com/mp3/Air%20Plane%20Ding-SoundBible.com-496729130.mp3']
+      });
       audio.play();
+      Howler.volume(1.5);
     },
 
     async onInit (promise) {
