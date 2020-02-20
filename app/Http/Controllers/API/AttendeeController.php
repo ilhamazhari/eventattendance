@@ -69,11 +69,9 @@ class AttendeeController extends Controller
 
     public function attendance($id_attendee)
     {
-      if(Attendee::where('id_attendee', $id_attendee)->where('attendance', 0)->update(['attendance' => 1])){
-        $attendee = Attendee::where('id_attendee', $id_attendee)->first();
+      $attendee = Attendee::where('id_attendee', $id_attendee)->first();
+      if(Attendee::where('id_attendee', $id_attendee)->update(['attendance' => 1])){
         return response()->json($attendee,200);
-      }else if(Attendee::where('id_attendee', $id_attendee)->where('attendance', 1)->get()->count() > 0){
-        return response()->json('User sudah discan', 200);
       }else{
         return response()->json('Failed!',500);
       }

@@ -28,8 +28,13 @@ export default {
   methods: {
     async onDecode (result) {
       const { data } = await window.axios.get('/api/attendee/attendance/' + result);
+      if(data.attendance == 1){
+        this.error = 'User sudah discan';
+      }
       this.id = result;
       this.name = data.fullname;
+      audio = new Audio('http://soundbible.com/mp3/Air%20Plane%20Ding-SoundBible.com-496729130.mp3');
+      audio.play();
     },
 
     async onInit (promise) {
